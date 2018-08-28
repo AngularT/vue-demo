@@ -5,6 +5,7 @@
 </template>
 
 <script>
+// test
 export default {
   name: 'Hi',
   data () {
