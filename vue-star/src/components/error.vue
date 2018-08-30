@@ -1,13 +1,14 @@
 <template>
-  <div>{{msg}}</div>
+  <div>{{msg}}
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Hi1',
+  name: 'Error',
   data () {
     return {
-      msg: 'hi,i am angularT1!'
+      msg: 'Error:404'
     }
   }
 }

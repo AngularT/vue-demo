@@ -1,27 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Hi from '@/components/Hi'
-import Hi1 from '@/components/Hi1'
-import Hi2 from '@/components/Hi2'
+import Pos from '@/components/page/pos'
+import Error from '@/components/error'
+
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Pos',
+      component: Pos
     },
     {
-      path: '/hi',
-      name: 'Hi',
-      component: Hi,
-      children: [
-        {path: '/', component: Hi},
-        {path: '/hi/hi1', component: Hi1},
-        {path: '/hi/hi2', component: Hi2}
-      ]
+      path: '*',
+      component: Error
     }
   ]
 })
