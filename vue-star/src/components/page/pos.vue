@@ -7,7 +7,11 @@
 <script>
 export default {
   name: "Pos",
-
+  data () {
+    return {
+      
+    }
+  }
 }
 </script>
 
