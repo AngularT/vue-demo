@@ -44,7 +44,14 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-
+    proxyTable: {
+      '/api': {
+        target: 'http://at.alicdn.com',  //目标接口域名
+        changeOrigin: true,  //是否跨域
+        pathRewrite: {
+          '^/api': '/api'   //重写接口
+        }
+    },
     /**
      * Source Maps
      */
