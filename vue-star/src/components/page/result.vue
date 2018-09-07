@@ -53,9 +53,9 @@ export default {
   },
   methods: {
     formatterDateTime (){
-      var date=new Date()
-      var month=date.getMonth() + 1
-        var datetime = date.getFullYear()
+      let date=new Date()
+      let month=date.getMonth() + 1
+        let datetime = date.getFullYear()
             + ""// "年"
             + (month >= 10 ? month : "0"+ month)
             + ""// "月"
