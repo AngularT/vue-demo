@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <!-- 左侧导航 -->
-    <leftNav></leftNav>
     <!-- 主内容区域 -->
     <div class="main">
       <transition name="fade" mode="out-in">
@@ -12,16 +11,16 @@
 </template>
 
 <script>
-import leftNav from '@/components/common/leftNav'
+import './assets/style/reset.css'
 export default {
   name: 'App',
   data() {
     return {
-      newsID: '111'
+
     }
   },
   components: {
-    leftNav
+
   }
 }
 </script>
@@ -35,20 +34,14 @@ export default {
   color: #2c3e50;
   height:100%;
 }
-
-
+.main {
+  height: 100%;
+}
 .fade-enter-active{
-  transition:opacity .5s;
+  transition:opacity .3s;
 }
 .fade-leave-active{
   opacity:0;
-  transition:opacity .5s;
-}
-.main{
-  float:left;
-  width:95%; 
-  background-color: #EFF2F7;
-  height:100%;
-  overflow: auto;
+  transition:opacity .3s;
 }
 </style>
