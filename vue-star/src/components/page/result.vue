@@ -13,19 +13,19 @@
     <p><span>财富指数：</span><span>{{content.money_star}}</span></p>
     <p><span>幸运色：</span><span>{{content.lucky_color}}</span></p>
     <p><span>幸运数字：</span><span>{{content.lucky_num}}</span></p>
-    
   </div>
 </template>
 <script>
 import axios from 'axios'
 import link from '../../base/handle.js'
+import choose from './choose'
 export default {
   name: 'result',
   data () {
     return {
       star: '',
       // url: link.URL.star
-      content: {}
+      content: {},
     }
   },
   created () {
@@ -68,6 +68,9 @@ export default {
             + (date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds());
         return datetime;
     }
+  },
+  components: {
+    choose
   }
 }
 </script>

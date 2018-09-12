@@ -13,17 +13,18 @@ export default {
   name:'choose',
   data () {
     return {
-      
+      msg: this.childMsg
     }
   },
   methods: {
     myFate () {
+      this.$emit('parent','string');
       this.$router.push('/myFate')
     },
     starFate () {
       this.$router.push('/starFate')
     },
-  }
+  },
 }
 </script>
 <style scoped>
