@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <app></app>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    // this指的是 data return 的object
+    // 父用子  先有子，声明子，使用子
+    // 父传子  父传子（属性） 子声明（接受） 子直接用（就是自己的一样）
+    var myHeader = {
+      template: `
+        <div>我是头部 {{title}}</div>
+      `,
+      props: ['title']
+    }
+    var myBody = {
+      template: '<div>我是身体{{title}}</div>',
+      props: ['title']
+    }
+    // 函数调用的方式创建组件
+    var myFooter = Vue.extend({
+      template: '<div>我是底部</div>'
+    })
+    // 语法糖
+    var App = {
+      components: {   //声明子组件
+        'my-header': myHeader,
+        'my-body': myBody,
+        'my-footer': myFooter
+      },
+      // 使用子组件
+      template: `   
+        <div>
+          <my-header :title="xxx"></my-header>
+          <my-body title="传递一个常量"></my-body>
+          <my-footer></my-footer>
+        </div>
+      `,
+      data () {
+        return {
+          xxx: '向子组件传入数据'
+        }
+      }
+    }
+    // 声明入口组件
+    new Vue({
+      el: "#app",
+      components: {
+        app: App
+      },
+      template: '<app/>',  //入口组件
+      
+    })
+  </script>
+</body>
+</html>

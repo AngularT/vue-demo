@@ -8,6 +8,7 @@
       </el-date-picker>
     </div>
     <button class="btn" @click="getStar">查看我的星座运势</button>
+    <p>{{value2}}</p>
   </div>
 </template>
 <script>
@@ -19,6 +20,7 @@ export default {
       value1: '',
       star: '',
       py: '',
+      value3: 'asdfsadf'
     }
   },
   methods: {
@@ -27,6 +29,7 @@ export default {
         alert('请输入生日');
         return;
       }
+      console.log(this.value2)
       let d = new Date(this.value1);
       let month = d.getMonth() + 1;
       let day = d.getDate();
@@ -42,6 +45,16 @@ export default {
         const s="魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯";
         const arr=[20,19,21,21,21,22,23,23,23,23,22,22];
         return s.substr(month*2-(day<arr[month-1]?2:0),2);
+    }
+  },
+  computed: {
+    value2(){
+      return this.value3.split('').reverse();
+    }
+  },
+  watch: {
+    value1(){
+      this.value3 = 'aaaaaa'
     }
   }
 }

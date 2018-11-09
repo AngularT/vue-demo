@@ -1,0 +1,86 @@
+.box{
+  width: 100%;
+  background: #690;
+  padding-top: 200rpx;
+  /* overflow: auto; */
+}
+.level_box{
+  width: 1400rpx;
+  height: 74rpx;
+  overflow: hidden;
+  position: relative;
+  top: 200rpx;
+  left: 0;
+  background: #000;
+}
+.line{
+  width: 92%;
+  height: 8rpx;
+  position: absolute;
+  top: 0;bottom: 0;right: 0;
+  margin: auto 0;
+  border-radius: 8rpx;
+  background: #f6f6f6;
+}
+.chunk_box{
+  float: left;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.laing_box{
+  float: left;
+  width: 200rpx;
+  height: 74rpx;
+  box-sizing: border-box;
+  background: #fff;
+  border: 10rpx #ff9f15 solid;
+  border-radius: 74rpx;
+}
+.laing{
+  width: 160rpx;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+.liang_line{
+  width: 120rpx;
+  height: 8rpx;
+  position: absolute;
+  top: 0;bottom: 0;left: 0;
+  margin: auto 0;
+  background: #ff9f15;
+  border-radius: 0 8rpx 8rpx 0;
+  z-index: 3;
+}
+.laing_box2{
+  width: 54rpx;
+  height: 54rpx;
+  margin-top: 10rpx;
+  float: left;
+  background: #eee;
+  border-radius: 50%;
+}
+.hui{
+  width: 100%;
+  height: 8rpx;
+  position: absolute;
+  top: 0;bottom: 0;left: 0;
+  margin: auto 0;
+  background: #f6f6f6;
+}
+.di{
+  width: 100rpx;
+  height: 100rpx;
+  background: red;
+}
+.relative-class {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200rpx;
+  text-align: center;
+  background: red;
+  z-index: 99;
+}

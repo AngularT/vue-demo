@@ -1,0 +1,6 @@
+  <view class="">
+    <view class="tab">{{value1}}</view>
+    <view class="tab">详情</view>
+    <view class="tab">参数</view>
+    <view class="tab">推荐</view>
+  </view>
