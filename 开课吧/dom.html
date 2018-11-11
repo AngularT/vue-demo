@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    input {
+      border:  1px solid red;
+    }
+  </style>
+  <div id="app">
+    <app></app>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    var App = {
+      data () {
+        return {
+          isShow: false
+        }
+      },
+      template: '<div><button ref="comBtn">按钮一下</button><input type="text" ref="input" v-if="isShow"></div>',
+      // 加载数据
+      created () {
+        
+      },
+      // 装载之后
+      // $refs 获取dom || 获取组件
+      mounted () {
+        this.isShow = true;
+        // true 之后 dom并不会马上加载，而是在代码执行完之后判断最终的状态。
+        // 因此直接在true 之后执行操作是无效的 
+        // 需要在 $nextTick 中进行操作
+        this.$nextTick(function(){
+          this.$refs.input.focus();
+        })
+        console.log(this)
+        console.log(this.$refs.comBtn)
+      }
+    }
+    // 声明入口组件
+    new Vue({
+      el: "#app",
+      components: {
+        app: App
+      },
+      template: '<app/>',  //入口组件
+      
+    })
+  </script>
+</body>
+</html>

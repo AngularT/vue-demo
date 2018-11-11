@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script src="./v-router.js"></script>
+  <script>
+    
+    var zhuce = {
+      template: `
+        <div>
+          我是注册页面
+        </div>
+      `,
+    }
+    var login = {
+      template: `
+        <div>
+          我是登录页面,下面是我的子路由显示的内容
+          <router-view></router-view>  
+        </div>
+      `,
+    }
+    var Woman = {
+      template: `
+        <div>
+          我是登录页面的子路由显示的页面 woman
+        </div>
+      `,
+    }
+    var Man = {
+      template: `
+        <div>
+          我是登录页面的子路由显示的页面 man
+        </div>
+      `,
+    }
+    console.log(VueRouter)
+    // 安装插件
+    Vue.use(VueRouter)
+    // obeject.defineProperty(Vue.propertype,$route,{
+    //    get: function(){return 自身的一个router对象}
+    // })   
+    // 在vue实例及子类上挂载一个$router方法
+    // 创建路由对象
+    var router = new VueRouter({
+      
+      // 配置路由对象
+      routes: [
+        {
+          name: 'login',
+          path: '/login', 
+          component: login,
+          children: [
+            {
+              name: 'login.woman',
+              path: 'woman', 
+              component: Woman,
+            },
+            {
+              name: 'login.man',
+              path: 'man', 
+              component: Man,
+            },
+          ]
+        },
+        {
+          name: 'zhuce',
+          path: '/zhuce/:name', 
+          component: zhuce     
+        },
+      ]
+    })
+    
+    // 关联vue实例
+    var App = {
+      template: `
+        <div>
+          <router-link :to="{name: 'login.woman'}">登录</router-link>
+          <router-link :to="{name: 'login.man'}">man</router-link>
+          <router-link :to="{name:'zhuce',params:{name:'abc'} }">注册</router-link>
+          <router-view></router-view>  
+        </div>
+      `,
+
+    }
+    new Vue({
+      el: "#app",
+      router: router, // 关联
+      components: {
+        app: App
+      },
+      template: '<app/>',  //入口组件
+      
+    })
+  </script>
+</body>
+</html>

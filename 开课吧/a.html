@@ -12,12 +12,17 @@
   </div>
   <script src="./node_modules/vue/dist/vue.js"></script>
   <script>
+    // 公共组件
+    Vue.component("common",{
+      template: `<div>我是公共组件</div>`
+    })
     // this指的是 data return 的object
     // 父用子  先有子，声明子，使用子
     // 父传子  父传子（属性） 子声明（接受） 子直接用（就是自己的一样）
     var myHeader = {
       template: `
         <div>我是头部 {{title}}</div>
+        
       `,
       props: ['title']
     }
@@ -27,14 +32,15 @@
     }
     // 函数调用的方式创建组件
     var myFooter = Vue.extend({
-      template: '<div>我是底部</div>'
+      template: '<div>我是底</div>'
     })
     // 语法糖
     var App = {
       components: {   //声明子组件
         'my-header': myHeader,
         'my-body': myBody,
-        'my-footer': myFooter
+        'my-footer': myFooter,
+        
       },
       // 使用子组件
       template: `   
@@ -42,6 +48,7 @@
           <my-header :title="xxx"></my-header>
           <my-body title="传递一个常量"></my-body>
           <my-footer></my-footer>
+          <common></common>
         </div>
       `,
       data () {

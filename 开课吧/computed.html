@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <app></app>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    // 公共组件，公共过滤器 全局不带s
+    // 公共组件
+    Vue.component("common",{
+      template: `<div>
+          <input v-model="n1" type="text">
+          <input v-model="n2" type="text">
+          {{result}}
+        </div>`,
+      data () {
+        return {
+          myText: '十点半帮我脱胸罩',
+          n1: 10,
+          n2: 9
+        }
+      },
+      computed: {
+        result: function() {
+          return (this.n1-0 + this.n2)
+        }
+      }
+    })
+    // 全局过滤器
+    Vue.filter('commonFilter',function(str){
+      return str.split('').reverse().join('');
+    })
+    // 声明入口组件
+    new Vue({
+      el: "#app",
+      components: {
+        // app: App
+      },
+      template: '<common/>',  //入口组件
+      
+    })
+  </script>
+</body>
+</html>
