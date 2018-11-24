@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    var o = {};
+    console.log(o)
+    function TestDefineSetAndGet() {
+      Object.defineProperty(this, 'myproperty', {
+        // 获取对象属性时触发
+        get: function () {
+          return 'I alway return this string,whatever you have assigned';
+        },
+        // 设置对象属性
+        set: function () {
+          this.myname = 'this is my name string';
+        }
+      });
+    }
+    var instance = new TestDefineSetAndGet();
+    // 'I alway return this string,whatever you have assigned'
+    console.log(instance.myproperty);
+    // 'this is my name string'
+    // console.log(instance.myname);//继承属性
+    console.log(instance)
+  var china = {
+    nation: '中国',
+    birthplaces: ['北京', '上海', {1:['sk', 'ls']}],
+    skincolr: 'yellow',
+    friends: ['sk', 'ls']
+  }
+  //深复制，要想达到深复制就需要用递归
+  function deepClone(obj,myObj) {
+    var obj = obj | {};
+    for (var i in myObj) {
+      // 判断是否是对象
+      if (typeof myObj[i] === 'object') {
+        if (myObj[i].constructor === Array) {
+          obj[i] = []
+        } else {
+          obj[i] = {}
+        }
+        deepClone(obj[i],myObj[i])
+      } else {
+        obj[i] = myObj[i]
+      }
+      
+    }
+    return obj;
+  }
+  var my = {name: "adfad"}
+  my = deepClone(china,my)
+  console.log(my)
+  var arr = [1,2,3,4,5,1,2,4];
+  var arr2 = new Set(arr);
+  console.log(arr2)
+  </script>
+</body>
+</html>

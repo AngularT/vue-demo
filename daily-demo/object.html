@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Object.assign() 将所有可枚举属性的值从一个
+    // 或多个源对象复制到目标对象。它将返回目标对象。
+    const obj = {
+      a: 1,
+      b: 2,
+      c: {q: 0}
+    }
+    const obj2 = Object.assign({d:4,e:1,a:1},obj)
+    obj2.c.q = 9;
+    obj2.b = 9
+    console.log(obj2,obj)
+    const o1 = {a: 1}
+    const o2 = {b: 1}
+    const o3 = {c: 1}
+    // 合并对象，对象本身也会改变
+    const o4 = Object.assign(o1,o2,o3)
+    console.log(o4,o1,o2,o3)
+    // 深拷贝
+    const obj3 = JSON.parse(JSON.stringify(obj));
+    obj.a = 3
+    console.log(obj3,obj) // a:1,b:2,c:{q:0}   a:3,b:2,c:{q:0}    
+    const objKey = {
+      g: 9,
+      a: 1,
+      b: 2,
+      c: 3,
+      f: 4
+    }
+    // 返回传入对象的属性组成的字符串数组
+    const target = Object.keys(objKey)
+    console.log(target)
+    // apply 将一个数组合并到另一个数组中
+    var arr1 = [1,2,3]
+    var arr2 = [4,5,6]
+    arr1.push.apply(arr1,arr2)
+    var max = Math.max.apply(null,arr1)
+    // This about equal to Math.max(arr1[0], ...) or Math.max(1,2,3,4, ..)
+    console.log(arr1,max)
+    const object1 = { 2: 4, 1: 42 };
+    Object.entries(object1).forEach(([key, value]) => {
+      console.log(`${key}`); // "a 5", "b 7", "c 9"
+    });
+    var obj5 = { foo: "bar", baz: 42 }; 
+    var map = new Map(Object.entries(obj5));
+    console.log(map);
+  </script>
+</body>
+</html>
